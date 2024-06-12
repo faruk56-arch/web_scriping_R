@@ -1,7 +1,7 @@
 {
     "id": "EB78DFC2",
-    "path": "C:/Users/SurfaceBook/Desktop/Pokemon/testttt.R",
-    "project_path": "testttt.R",
+    "path": "C:/Users/SurfaceBook/Desktop/Pokemon/main.R",
+    "project_path": "main.R",
     "type": "r_source",
     "hash": "2937101212",
     "contents": "",
@@ -20,7 +20,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1718142629280,
+    "last_content_update": 1718142629,
     "read_only": false,
     "read_only_alternatives": []
 }

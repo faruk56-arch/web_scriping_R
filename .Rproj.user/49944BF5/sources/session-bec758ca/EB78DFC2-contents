@@ -78,10 +78,6 @@ champion_links <- webpage %>%
 if (length(champion_links) == 0) {
   stop("No champion links found")
 }
-#champions_data$Description <- gsub("\\n", "", champions_data$Description)
-#champions_data$Description <- gsub("\\r", "", champions_data$Description)
-#champions_data$Description <- gsub("\\t", "", champions_data$Description)
-#print(champion_links)
 
 # Extract details for each champion
 champions_data <- bind_rows(lapply(champion_links, function(link) {

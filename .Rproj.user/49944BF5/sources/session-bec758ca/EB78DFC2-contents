@@ -2,6 +2,8 @@
 library(rvest)
 library(dplyr)
 library(stringr)
+library(mongolite)
+
 
 # Function to extract champion details from the provided URL
 get_champion_details <- function(url) {
@@ -96,7 +98,24 @@ champions_data <- champions_data %>%
 # Print the cleaned data
 print(champions_data)
 
-# Save the cleaned data to a CSV file
-write.csv(champions_data, 'data/cleaned_champions.csv', row.names = FALSE)
+# Connect to MongoDB
+mongo_conn <- tryCatch(mongo(collection = "champions", db = "league_of_legends", url = "mongodb://localhost"), error = function(e) {
+  print(paste("Error connecting to MongoDB:", e))
+  NULL
+})
 
-print("Cleaned champion information has been saved to cleaned_champions.csv")
+if (is.null(mongo_conn)) {
+  stop("Failed to connect to MongoDB")
+}
+
+# Insert the cleaned data into MongoDB
+tryCatch(
+  {
+    mongo_conn$insert(champions_data)
+    print(mongo_conn$count())
+    print("Cleaned champion information has been saved to MongoDB")
+  },
+  error = function(e) {
+    print(paste("Error inserting data into MongoDB:", e))
+  }
+)

@@ -1,14 +1,15 @@
 # Load necessary libraries
-#install.packages("mongolite")
-
 library(shiny)
 library(dplyr)
 library(readr)
 library(DT)
+install.packages("mongolite")
+
 
 # Load the cleaned data
 #file_path <- 'data/cleaned_champions.csv'
 #champions_data <- read_csv(file_path)
+
 # Connect to MongoDB and load the cleaned data
 mongo_conn <- mongo(collection = "champions", db = "league_of_legends", url = "mongodb://localhost")
 champions_data <- mongo_conn$find()
